@@ -16,7 +16,8 @@ function populateForm() {
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
 let option = document.createElement('option');
-option.textContent = Product.allProducts[i].name
+option.textContent = Product.allProducts[i].name;
+option.value = Product.allProducts[i].name;
 selectElement.appendChild(option)
   }
 
@@ -58,7 +59,7 @@ function updateCounter() {
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  let item = document.getElementById('items').value
+  let item = document.getElementById('items').value;
   let amount = Number(document.getElementById('quantity').value);
   // TODO: Get the item and quantity from the form
   let text1 = document.createElement('p')

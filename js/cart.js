@@ -1,6 +1,6 @@
 /* global Cart */
 'use strict';
-let newCart=[]
+// let newCart=[]
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 let table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
@@ -20,15 +20,19 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-  for(let i = 0; i< newCart.length; i++){   
-  let remove = document.getElementsByTagName('tbody')[0].innerHTML='';}
+  let rows = document.querySelectorAll('tbody > tr')
+  if (rows) {
+    let tbody = document.querySelector('tbody')
+    tbody.innerHTML = ''
+  }
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-let tableBody = document.getElementsByTagName('tbody'[0]);
-for (let i = 0; i < newCart.length; i++){
+let tableBody = document.querySelector('tbody');
+for (let i = 0; i < cart.items.length; i++){
   let tRow = document.createElement('tr');
+  tableBody.appendChild(tRow)
   let tData = document.createElement('td');
   let tItem = document.createElement('td');
   let tAmount = document.createElement('td');
@@ -38,10 +42,9 @@ tData.addEventListener('click', removeItemFromCart);
 tData.setattribute('id', newCart[i].item);
 
 tData.textContent = 'X'
-tItem.textContent = newCart[i].item;
-tAmount.textContent = newCart[i].quantity;
+tItem.textContent = cart[i].item;
+tAmount.textContent = cart[i].quantity;
 
-tableBody.appendChild(tRow)
 
 tRow.appendChild(tData);
 tRow.appendChild(tAmount);
